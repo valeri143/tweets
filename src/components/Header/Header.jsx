@@ -16,11 +16,11 @@ export const Header = () => {
           </IconWrapper>
           Home
         </StyledLink>
-        <StyledLink to="/second">
+        <StyledLink to="/tweets">
           <IconWrapper>
             <use href={`${sprite}#icon-logo`} />
           </IconWrapper>
-          Second
+          Tweets
         </StyledLink>
       </Navigation>
     </HeaderContainer>

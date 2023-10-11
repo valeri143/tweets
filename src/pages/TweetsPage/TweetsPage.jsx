@@ -1,13 +1,17 @@
-import { Container, Block, Title, StyledLink } from './TweetsPage.styled';
+import { StyledH1 } from '../HomePage/HomePage.styled';
+import { StyledContainer } from './TweetsPage.styled';
 
 const TweetsPage = () => {
   return (
-    <Container>
-      <Block>
-        <Title>Second Page</Title>
-        <StyledLink to="/second/5">Half</StyledLink>
-      </Block>
-    </Container>
+    <StyledContainer>
+      <StyledH1>Tweets</StyledH1>
+      <ul>
+        <li>
+          <div></div>
+        </li>
+        <li></li>
+      </ul>
+    </StyledContainer>
   );
 };
 

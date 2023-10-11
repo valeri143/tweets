@@ -1,13 +1,21 @@
+:root {
+  --primary-color: #EBD8FF;
+  --background-color: #320352;
+  --light-color:#FFFFFF;
+  --button-text-color: #373737;
+  --button-followed-color: #5CD3A8;
+}
+
 body {
-  /* background-color: #000;
-  background-image: url('./assets/background.png');
+  background-color: #320352;
+  background-image: url('./images/main-page-bg-min.png');
   background-size: auto 100%;
   background-position: center center;
-  background-repeat: no-repeat; */
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;  
+  font-weight: 500;
   font-style: normal;
-  color: #111111;
+  font-size: 20px;
+  color: var(--primary-color);
   width: auto;
   height: 100vh;
 }
