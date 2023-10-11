@@ -1,16 +1,19 @@
+import { TweetCard } from '../../components/TweetCard/TweetCard';
 import { StyledH1 } from '../HomePage/HomePage.styled';
-import { StyledContainer } from './TweetsPage.styled';
+import { StyledContainer, StyledTweetsUl } from './TweetsPage.styled';
 
 const TweetsPage = () => {
   return (
     <StyledContainer>
       <StyledH1>Tweets</StyledH1>
-      <ul>
+      <StyledTweetsUl>
         <li>
-          <div></div>
+          <TweetCard />
         </li>
-        <li></li>
-      </ul>
+        <li>
+          <TweetCard />
+        </li>
+      </StyledTweetsUl>
     </StyledContainer>
   );
 };
