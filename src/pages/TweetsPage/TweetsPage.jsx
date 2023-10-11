@@ -1,6 +1,6 @@
-import { Container, Block, Title, StyledLink } from './SecondPage.styled';
+import { Container, Block, Title, StyledLink } from './TweetsPage.styled';
 
-const SecondPage = () => {
+const TweetsPage = () => {
   return (
     <Container>
       <Block>
@@ -11,4 +11,4 @@ const SecondPage = () => {
   );
 };
 
-export default SecondPage;
+export default TweetsPage;
