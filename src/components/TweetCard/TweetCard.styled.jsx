@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 
 export const StyledTweetDiv = styled.div`
-  width: 380px;
-  height: 460px;
+  width: auto;
+  height: auto;
   position: relative;
-  padding: 20px;
+  padding: 28px 36px 36px 36px;
   border-radius: 20px;
   background: linear-gradient(
     115deg,
@@ -13,6 +13,15 @@ export const StyledTweetDiv = styled.div`
     #4b2a99 78.99%
   );
   box-shadow: -2.5777px 6.87386px 20.62157px 0px rgba(0, 0, 0, 0.23);
+  @media screen and (min-width: 768px) {
+    width: 350px;
+  }
+`;
+
+export const StyledTweetSvg = styled.svg`
+  position: absolute;
+  top: 20px;
+  left: 20px;
 `;
 
 export const StyledTweetImg = styled.img`
@@ -22,7 +31,7 @@ export const StyledTweetImg = styled.img`
 `;
 
 export const StyledTweetLineDiv = styled.div`
-  width: 170px;
+  width: 40%;
   height: 8px;
   background: var(--primary-color);
   box-shadow:
@@ -31,10 +40,13 @@ export const StyledTweetLineDiv = styled.div`
     0px -1.71846px 3.43693px 0px #ae7be3 inset;
   position: absolute;
   left: 0;
+  @media screen and (min-width: 768px) {
+    width: 171.5px;
+  }
 `;
 
 export const StyledTweetLine2Div = styled.div`
-  width: 170px;
+  width: 39.6%;
   height: 8px;
   background: var(--primary-color);
   box-shadow:
@@ -43,6 +55,9 @@ export const StyledTweetLine2Div = styled.div`
     0px -1.71846px 3.43693px 0px #ae7be3 inset;
   position: absolute;
   right: 0;
+  @media screen and (min-width: 768px) {
+    width: 171.5px;
+  }
 `;
 
 export const StyledTweetCircle = styled.div`
@@ -64,6 +79,10 @@ export const StyledTweetCircle = styled.div`
   left: 50%;
   right: 50%;
   transform: translate(-50%, -50%);
+`;
+
+export const StyledTweetAvatarImg = styled.img`
+  border-radius: 50%;
 `;
 
 export const StyledTweetH2 = styled.h2`
@@ -91,4 +110,9 @@ export const StyledTweetButton = styled.button`
   text-transform: uppercase;
   font-size: 18px;
   font-weight: 600;
+  transition: scale 0.3s ease;
+  &:hover,
+  &:focus {
+    scale: 1.1;
+  }
 `;

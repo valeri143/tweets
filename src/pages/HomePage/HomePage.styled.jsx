@@ -4,11 +4,21 @@ export const StyledContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: max-content;
+  text-align: center;
+  width: 320px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  @media screen and (min-width: 390px) {
+    width: 390px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 768px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: max-content;
+  }
 `;
 
 export const StyledH1 = styled.h1`

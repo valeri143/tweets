@@ -8,7 +8,7 @@
 
 body {
   background-color: #320352;
-  background-image: url('./images/main-page-bg-min.png');
+  background-image: url('./assets/main-page-bg-min.png');
   background-size: auto 100%;
   background-position: center center;
   font-family: 'Montserrat', sans-serif;  
@@ -41,4 +41,9 @@ img {
 }
 button {
   cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
 }
