@@ -20,6 +20,8 @@ const TweetsPage = () => {
   const [isVisibleButton, setIsVisibleButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [filter, setFilter] = useState('show all');
+  const [followingUsers, setFollowingUsers] = useState([]);
+  const [withoutFollowingUsers, setWithoutFollowingUsers] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,7 +30,7 @@ const TweetsPage = () => {
       try {
         const fetchedUsers = await fetchUsers(page);
         setUsers((prevUsers) => [...prevUsers, ...fetchedUsers]);
-        setIsVisibleButton(fetchedUsers.length !== 0);
+        setIsVisibleButton(fetchedUsers.length !== 0 && page !== 4);
       } catch (error) {
         console.log(error);
       } finally {
@@ -38,34 +40,44 @@ const TweetsPage = () => {
     getUsers();
   }, [page]);
 
+  useEffect(() => {
+    const followingUsers = users.filter((user) => {
+      const isFollowing = localStorage.getItem(`isFollowing_${user.id}`);
+      return isFollowing === 'true';
+    });
+
+    const withoutFollowingUsers = users.filter((user) => {
+      const isFollowing = localStorage.getItem(`isFollowing_${user.id}`);
+      return isFollowing !== 'true';
+    });
+
+    setFollowingUsers(followingUsers);
+    setWithoutFollowingUsers(withoutFollowingUsers);
+  }, [users]);
+
   const onClick = () => {
     setPage((prevPage) => prevPage + 1);
   };
 
-  const followingUsers = users.filter((user) => {
-    const isFollowing = localStorage.getItem(`isFollowing_${user.id}`);
-    return isFollowing === 'true';
-  });
-
-  const withoutFollowingUsers = users.filter((user) => {
-    const isFollowing = localStorage.getItem(`isFollowing_${user.id}`);
-    return isFollowing === 'false';
-  });
-
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
     setPage(1);
+
     switch (event.target.value) {
       case 'show all':
-        return setFilteredUsers(users);
+        setFilteredUsers(users);
+        break;
 
       case 'follow':
-        return setFilteredUsers(withoutFollowingUsers);
+        setFilteredUsers(withoutFollowingUsers);
+        break;
 
       case 'followings':
-        return setFilteredUsers(followingUsers);
+        setFilteredUsers(followingUsers);
+        break;
 
       default:
+        setFilteredUsers(users);
         break;
     }
   };
