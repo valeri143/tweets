@@ -26,7 +26,9 @@ export const TweetCard = ({
 }) => {
   const [isFollowing, setIsFollowing] = useState(() => {
     const storedFollowingState = localStorage.getItem(`isFollowing_${cardId}`);
-    return storedFollowingState ? JSON.parse(storedFollowingState) : false;
+    return storedFollowingState
+      ? JSON.parse(storedFollowingState)
+      : localStorage.setItem(`isFollowing_${cardId}`, JSON.stringify(false));
   });
 
   const formattedFollowers = formatNumber(followers);
@@ -39,7 +41,6 @@ export const TweetCard = ({
     );
     const newFollowingState = !isFollowing;
     setIsFollowing(newFollowingState);
-    // Оновлюємо локальний стан користувача на основі оновлених даних з сервера
     setUsers((prevUsers) =>
       prevUsers.map((user) => (user.id === cardId ? updatedUser : user)),
     );

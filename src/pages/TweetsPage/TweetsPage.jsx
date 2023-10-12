@@ -50,9 +50,13 @@ const TweetsPage = () => {
     if (filter === 'show all') {
       return user;
     } else if (filter === 'follow') {
-      return !localStorage.getItem(`isFollowing_${user.id}`);
+      if (!localStorage.getItem(`isFollowing_${user.id}`)) {
+        return user;
+      }
     } else if (filter === 'followings') {
-      return localStorage.getItem(`isFollowing_${user.id}`);
+      if (localStorage.getItem(`isFollowing_${user.id}`)) {
+        return user;
+      }
     }
     return false;
   });
@@ -73,7 +77,7 @@ const TweetsPage = () => {
       </StyledDropdown>
       <StyledContainer>
         <StyledTweetsUl>
-          {filteredUsers.length &&
+          {filteredUsers &&
             filteredUsers.map((user) => (
               <li key={user.id}>
                 <TweetCard
