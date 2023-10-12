@@ -46,6 +46,27 @@ export const StyledArrowSvg = styled.svg`
   }
 `;
 
+export const StyledDropdown = styled.select`
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: #007bff;
+  }
+
+  &:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+`;
+
 export const StyledTweetsUl = styled.ul`
   display: flex;
   flex-direction: column;
@@ -54,6 +75,7 @@ export const StyledTweetsUl = styled.ul`
   align-items: center;
   gap: 48px;
   margin-top: 60px;
+  margin-bottom: 50px;
   @media screen and (min-width: 768px) {
     flex-direction: row;
   }

@@ -22,6 +22,7 @@ export const StyledContainer = styled.div`
 `;
 
 export const StyledH1 = styled.h1`
+  text-align: center;
   margin: 0;
   font-size: 60px;
   color: var(--light-color);
