@@ -45,18 +45,13 @@ const TweetsPage = () => {
     setFilter(event.target.value);
     setPage(1);
   };
-
   const filteredUsers = users.filter((user) => {
     if (filter === 'show all') {
-      return user;
+      return true;
     } else if (filter === 'follow') {
-      if (!localStorage.getItem(`isFollowing_${user.id}`)) {
-        return user;
-      }
+      return localStorage.getItem(`isFollowing_${user.id}`);
     } else if (filter === 'followings') {
-      if (localStorage.getItem(`isFollowing_${user.id}`)) {
-        return user;
-      }
+      return !localStorage.getItem(`isFollowing_${user.id}`);
     }
     return false;
   });
