@@ -1,4 +1,4 @@
-import { fetchUsers, addFollower, fetchUserById } from "./api";
+import { fetchUsers, addFollower, fetchUsersPagination } from "./api";
 import { formatNumber } from "./utils";
 
-export {fetchUsers, addFollower, formatNumber, fetchUserById};
+export {fetchUsers, addFollower, formatNumber, fetchUsersPagination};

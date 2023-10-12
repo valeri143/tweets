@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { fetchUsers } from '../../helpers/index';
+import { fetchUsersPagination } from '../../helpers/index';
 import { TweetCard } from '../../components/TweetCard/TweetCard';
 import { StyledH1 } from '../HomePage/HomePage.styled';
 import {
@@ -28,9 +28,11 @@ const TweetsPage = () => {
     const getUsers = async () => {
       setIsLoading(true);
       try {
-        const fetchedUsers = await fetchUsers(page);
+        const fetchedUsers = await fetchUsersPagination(page);
         setUsers((prevUsers) => [...prevUsers, ...fetchedUsers]);
-        setIsVisibleButton(fetchedUsers.length !== 0 && page !== 4);
+        setIsVisibleButton(
+          (fetchedUsers.length !== 0 && page !== 4) || page !== 1,
+        );
       } catch (error) {
         console.log(error);
       } finally {
