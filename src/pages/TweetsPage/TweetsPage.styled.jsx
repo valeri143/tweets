@@ -9,6 +9,7 @@ export const StyledButton = styled.button`
   align-items: center;
   gap: 8px;
   margin-left: 30px;
+  margin-bottom: 20px;
   color: var(--light-color);
   text-shadow:
     0 0 5px #00baff,
@@ -47,6 +48,7 @@ export const StyledArrowSvg = styled.svg`
 `;
 
 export const StyledDropdown = styled.select`
+  margin-left: 30px;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -65,6 +67,9 @@ export const StyledDropdown = styled.select`
     border-color: #007bff;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
   }
+  @media screen and (min-width: 768px) {
+    margin-left: 110px;
+  }
 `;
 
 export const StyledTweetsUl = styled.ul`
@@ -74,7 +79,7 @@ export const StyledTweetsUl = styled.ul`
   flex-wrap: wrap;
   align-items: center;
   gap: 48px;
-  margin-top: 60px;
+  margin-top: 40px;
   margin-bottom: 50px;
   @media screen and (min-width: 768px) {
     flex-direction: row;

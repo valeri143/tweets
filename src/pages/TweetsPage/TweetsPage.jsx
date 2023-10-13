@@ -20,8 +20,6 @@ const TweetsPage = () => {
   const [isVisibleButton, setIsVisibleButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [filter, setFilter] = useState('show all');
-  const [followingUsers, setFollowingUsers] = useState([]);
-  const [withoutFollowingUsers, setWithoutFollowingUsers] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,7 +33,6 @@ const TweetsPage = () => {
         } else {
           setUsers(fetchedUsers);
         }
-
         setIsVisibleButton(fetchedUsers.length !== 0 && page !== 4);
       } catch (error) {
         console.log(error);
@@ -47,35 +44,30 @@ const TweetsPage = () => {
   }, [page]);
 
   useEffect(() => {
+    let followingUsers;
+    let withoutFollowingUsers;
     switch (filter) {
       case 'show all':
         setFilteredUsers(users);
         break;
       case 'follow':
+        withoutFollowingUsers = users.filter((user) => {
+          const isFollowing = localStorage.getItem(`isFollowing_${user.id}`);
+          return isFollowing !== 'true';
+        });
         setFilteredUsers(withoutFollowingUsers);
         break;
       case 'followings':
+        followingUsers = users.filter((user) => {
+          const isFollowing = localStorage.getItem(`isFollowing_${user.id}`);
+          return isFollowing === 'true';
+        });
         setFilteredUsers(followingUsers);
         break;
       default:
         break;
     }
-  }, [users, filter, followingUsers, withoutFollowingUsers]);
-
-  useEffect(() => {
-    const following = users.filter((user) => {
-      const isFollowing = localStorage.getItem(`isFollowing_${user.id}`);
-      return isFollowing === 'true';
-    });
-
-    const withoutFollowing = users.filter((user) => {
-      const isFollowing = localStorage.getItem(`isFollowing_${user.id}`);
-      return isFollowing !== 'true';
-    });
-
-    setFollowingUsers(following);
-    setWithoutFollowingUsers(withoutFollowing);
-  }, [users]);
+  }, [users, filter]);
 
   const onClick = () => {
     setPage((prevPage) => prevPage + 1);
