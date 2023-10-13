@@ -29,10 +29,14 @@ const TweetsPage = () => {
       setIsLoading(true);
       try {
         const fetchedUsers = await fetchUsersPagination(page);
-        setUsers((prevUsers) => [...prevUsers, ...fetchedUsers]);
-        setIsVisibleButton(
-          (fetchedUsers.length !== 0 && page !== 4) || page !== 1,
-        );
+
+        if (page !== 1) {
+          setUsers((prevUsers) => [...prevUsers, ...fetchedUsers]);
+        } else {
+          setUsers(fetchedUsers);
+        }
+
+        setIsVisibleButton(fetchedUsers.length !== 0 && page !== 4);
       } catch (error) {
         console.log(error);
       } finally {
@@ -43,18 +47,34 @@ const TweetsPage = () => {
   }, [page]);
 
   useEffect(() => {
-    const followingUsers = users.filter((user) => {
+    switch (filter) {
+      case 'show all':
+        setFilteredUsers(users);
+        break;
+      case 'follow':
+        setFilteredUsers(withoutFollowingUsers);
+        break;
+      case 'followings':
+        setFilteredUsers(followingUsers);
+        break;
+      default:
+        break;
+    }
+  }, [users, filter, followingUsers, withoutFollowingUsers]);
+
+  useEffect(() => {
+    const following = users.filter((user) => {
       const isFollowing = localStorage.getItem(`isFollowing_${user.id}`);
       return isFollowing === 'true';
     });
 
-    const withoutFollowingUsers = users.filter((user) => {
+    const withoutFollowing = users.filter((user) => {
       const isFollowing = localStorage.getItem(`isFollowing_${user.id}`);
       return isFollowing !== 'true';
     });
 
-    setFollowingUsers(followingUsers);
-    setWithoutFollowingUsers(withoutFollowingUsers);
+    setFollowingUsers(following);
+    setWithoutFollowingUsers(withoutFollowing);
   }, [users]);
 
   const onClick = () => {
@@ -63,25 +83,6 @@ const TweetsPage = () => {
 
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
-    setPage(1);
-
-    switch (event.target.value) {
-      case 'show all':
-        setFilteredUsers(users);
-        break;
-
-      case 'follow':
-        setFilteredUsers(withoutFollowingUsers);
-        break;
-
-      case 'followings':
-        setFilteredUsers(followingUsers);
-        break;
-
-      default:
-        setFilteredUsers(users);
-        break;
-    }
   };
 
   return (
@@ -100,32 +101,21 @@ const TweetsPage = () => {
       </StyledDropdown>
       <StyledContainer>
         <StyledTweetsUl>
-          {filteredUsers.length !== 0
-            ? filteredUsers.map((user) => (
-                <li key={user.id}>
-                  <TweetCard
-                    cardId={user.id}
-                    tweets={user.tweets}
-                    followers={user.followers}
-                    avatar={user.avatar}
-                    setUsers={setUsers}
-                  />
-                </li>
-              ))
-            : users.map((user) => (
-                <li key={user.id}>
-                  <TweetCard
-                    cardId={user.id}
-                    tweets={user.tweets}
-                    followers={user.followers}
-                    avatar={user.avatar}
-                    setUsers={setUsers}
-                  />
-                </li>
-              ))}
+          {filteredUsers.length !== 0 &&
+            filteredUsers.map((user) => (
+              <li key={user.id}>
+                <TweetCard
+                  cardId={user.id}
+                  tweets={user.tweets}
+                  followers={user.followers}
+                  avatar={user.avatar}
+                  setUsers={setUsers}
+                />
+              </li>
+            ))}
         </StyledTweetsUl>
         {isLoading && <p>Loading...</p>}
-        {isVisibleButton && (
+        {isVisibleButton && filter === 'show all' && (
           <StyledTweetButton type="button" onClick={onClick}>
             Load More
           </StyledTweetButton>
