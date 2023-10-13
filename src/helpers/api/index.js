@@ -1,5 +1,4 @@
-import { fetchUsers } from "./fetchUsers";
 import { addFollower } from "./addFollower";
-import { fetchUsersPagination } from "./fetchUsersPagination";
+import { fetchUsers } from "./fetchUsers";
 
-export { fetchUsers, addFollower, fetchUsersPagination };
+export { addFollower, fetchUsers };

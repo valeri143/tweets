@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { fetchUsersPagination } from '../../helpers/index';
+import { fetchUsers } from '../../helpers/index';
 import { TweetCard } from '../../components/TweetCard/TweetCard';
 import { StyledH1 } from '../HomePage/HomePage.styled';
 import {
@@ -9,6 +9,7 @@ import {
   StyledButton,
   StyledArrowSvg,
   StyledDropdown,
+  StyledDropDownOption,
 } from './TweetsPage.styled';
 import sprite from '../../assets/sprite.svg';
 import { StyledTweetButton } from '../../components/TweetCard/TweetCard.styled';
@@ -26,7 +27,7 @@ const TweetsPage = () => {
     const getUsers = async () => {
       setIsLoading(true);
       try {
-        const fetchedUsers = await fetchUsersPagination(page);
+        const fetchedUsers = await fetchUsers(page);
 
         if (page !== 1) {
           setUsers((prevUsers) => [...prevUsers, ...fetchedUsers]);
@@ -87,11 +88,19 @@ const TweetsPage = () => {
         Back
       </StyledButton>
       <StyledDropdown value={filter} onChange={handleFilterChange}>
-        <option value="show all">Show All</option>
-        <option value="follow">Follow</option>
-        <option value="followings">Followings</option>
+        <StyledDropDownOption value="show all">Show All</StyledDropDownOption>
+        <StyledDropDownOption value="follow">Follow</StyledDropDownOption>
+        <StyledDropDownOption value="followings">
+          Followings
+        </StyledDropDownOption>
       </StyledDropdown>
       <StyledContainer>
+        {filteredUsers.length === 0 && filter === 'followings' && (
+          <>
+            <p>No followings yet </p>
+            <p>It`s time to follow someone!</p>
+          </>
+        )}
         <StyledTweetsUl>
           {filteredUsers.length !== 0 &&
             filteredUsers.map((user) => (

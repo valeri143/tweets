@@ -51,16 +51,23 @@ export const StyledDropdown = styled.select`
   margin-left: 30px;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  font-family: Montserrat;
+  border: 1px solid var(--button-text-color);
   border-radius: 5px;
-  background-color: #fff;
-  color: #333;
+  background-color: var(--light-color);
+  color: var(--button-text-color);
   cursor: pointer;
   outline: none;
   transition: all 0.3s ease;
 
   &:hover {
-    border-color: #007bff;
+    box-shadow:
+      0 0 5px #00baff,
+      0 0 10px #00baff,
+      0 0 20px #00baff,
+      0 0 40px #00baff,
+      0 0 80px #00baff;
+    border-color: var(--light-color);
   }
 
   &:focus {
@@ -70,6 +77,10 @@ export const StyledDropdown = styled.select`
   @media screen and (min-width: 768px) {
     margin-left: 110px;
   }
+`;
+
+export const StyledDropDownOption = styled.option`
+  color: #00baff;
 `;
 
 export const StyledTweetsUl = styled.ul`
