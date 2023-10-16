@@ -6,7 +6,7 @@ export const StyledTweetDiv = styled.div`
   width: auto;
   height: auto;
   position: relative;
-  padding: 28px 36px 36px 36px;
+  padding: 10px 0px 20px 0px;
   border-radius: 20px;
   background: linear-gradient(
     115deg,
@@ -15,8 +15,8 @@ export const StyledTweetDiv = styled.div`
     #4b2a99 78.99%
   );
   box-shadow: -2.5777px 6.87386px 20.62157px 0px rgba(0, 0, 0, 0.23);
-  @media screen and (min-width: 768px) {
-    width: 350px;
+  @media screen and (min-width: 390px) {
+    padding: 28px 36px 36px 36px;
   }
 `;
 
@@ -43,36 +43,6 @@ export const StyledTweetImg = styled.div`
   }
 `;
 
-export const StyledTweetLineDiv = styled.div`
-  width: 40%;
-  height: 8px;
-  background: var(--primary-color);
-  box-shadow:
-    0px 3.43693px 2.5777px 0px #fbf8ff inset,
-    0px 3.43693px 3.43693px 0px rgba(0, 0, 0, 0.06),
-    0px -1.71846px 3.43693px 0px #ae7be3 inset;
-  position: absolute;
-  left: 0;
-  @media screen and (min-width: 768px) {
-    width: 171.5px;
-  }
-`;
-
-export const StyledTweetLine2Div = styled.div`
-  width: 39.6%;
-  height: 8px;
-  background: var(--primary-color);
-  box-shadow:
-    0px 3.43693px 2.5777px 0px #fbf8ff inset,
-    0px 3.43693px 3.43693px 0px rgba(0, 0, 0, 0.06),
-    0px -1.71846px 3.43693px 0px #ae7be3 inset;
-  position: absolute;
-  right: 0;
-  @media screen and (min-width: 768px) {
-    width: 171.5px;
-  }
-`;
-
 export const StyledTweetCircle = styled.div`
   display: flex;
   justify-content: center;
@@ -92,6 +62,37 @@ export const StyledTweetCircle = styled.div`
   left: 50%;
   right: 50%;
   transform: translate(-50%, -50%);
+  z-index: 3;
+  &::before {
+    content: '';
+    width: 114px;
+    height: 8px;
+    background: var(--primary-color);
+    box-shadow:
+      0px 3.43693px 2.5777px 0px #fbf8ff inset,
+      0px 3.43693px 3.43693px 0px rgba(0, 0, 0, 0.06),
+      0px -1.71846px 3.43693px 0px #ae7be3 inset;
+    position: absolute;
+    right: 100%;
+    @media screen and (min-width: 390px) {
+      width: 150px;
+    }
+  }
+  &::after {
+    content: '';
+    width: 114px;
+    height: 8px;
+    background: var(--primary-color);
+    box-shadow:
+      0px 3.43693px 2.5777px 0px #fbf8ff inset,
+      0px 3.43693px 3.43693px 0px rgba(0, 0, 0, 0.06),
+      0px -1.71846px 3.43693px 0px #ae7be3 inset;
+    position: absolute;
+    left: 100%;
+    @media screen and (min-width: 390px) {
+      width: 150px;
+    }
+  }
 `;
 
 export const StyledTweetAvatarImg = styled.img`

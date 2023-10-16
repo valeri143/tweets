@@ -6,8 +6,6 @@ import {
   StyledTweetCircle,
   StyledTweetDiv,
   StyledTweetImg,
-  StyledTweetLine2Div,
-  StyledTweetLineDiv,
   StyledTweetButton,
   StyledTweetSvg,
   StyledTweetAvatarImg,
@@ -54,7 +52,6 @@ export const TweetCard = ({
         <use href={`${sprite}#icon-goit-logo`}></use>
       </StyledTweetSvg>
       <StyledTweetImg></StyledTweetImg>
-      <StyledTweetLineDiv></StyledTweetLineDiv>
       <StyledTweetCircle>
         <StyledTweetAvatarImg
           src={avatar}
@@ -64,7 +61,6 @@ export const TweetCard = ({
           loading="lazy"
         />
       </StyledTweetCircle>
-      <StyledTweetLine2Div></StyledTweetLine2Div>
       <StyledTweetH2> {tweets} tweets</StyledTweetH2>
       <StyledTweetH3>{formattedFollowers} Followers</StyledTweetH3>
       <StyledTweetButton
