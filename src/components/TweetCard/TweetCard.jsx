@@ -13,8 +13,6 @@ import {
   StyledTweetAvatarImg,
 } from './TweetCard.styled';
 import sprite from '../../assets/sprite.svg';
-import img1x from '../../assets/card-picture@1x-min.png';
-import img2x from '../../assets/card-picture@2x-min.png';
 import defaultAvatar from '../../assets/hansel.png';
 
 export const TweetCard = ({
@@ -55,14 +53,7 @@ export const TweetCard = ({
       <StyledTweetSvg width="76" height="22">
         <use href={`${sprite}#icon-goit-logo`}></use>
       </StyledTweetSvg>
-      <StyledTweetImg
-        srcSet={`${img1x} 1x, ${img2x} 2x`}
-        src={img1x}
-        alt="picture-of-card-tweet"
-        loading="lazy"
-        width={308}
-        height={168}
-      />
+      <StyledTweetImg></StyledTweetImg>
       <StyledTweetLineDiv></StyledTweetLineDiv>
       <StyledTweetCircle>
         <StyledTweetAvatarImg

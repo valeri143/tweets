@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import img1x from '../../assets/card-picture@1x-min.png';
+import img2x from '../../assets/card-picture@2x-min.png';
 
 export const StyledTweetDiv = styled.div`
   width: auto;
@@ -24,10 +26,21 @@ export const StyledTweetSvg = styled.svg`
   left: 20px;
 `;
 
-export const StyledTweetImg = styled.img`
+export const StyledTweetImg = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 30px;
+  background-image: url(${img1x});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 308px;
+  height: 168px;
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url(${img2x});
+  }
 `;
 
 export const StyledTweetLineDiv = styled.div`
