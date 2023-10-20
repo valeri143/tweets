@@ -20,14 +20,10 @@ export const TweetCard = ({
   avatar = defaultAvatar,
   setUsers,
 }) => {
-  const [isFollowing, setIsFollowing] = useState(() => {
-    const storedFollowingState = localStorage.getItem(`isFollowing_${cardId}`);
-    return storedFollowingState
-      ? JSON.parse(storedFollowingState)
-      : localStorage.setItem(`isFollowing_${cardId}`, JSON.stringify(false));
-  });
-
   const formattedFollowers = formatNumber(followers);
+  const [isFollowing, setIsFollowing] = useState(
+    localStorage.getItem('followingTweets')?.includes(cardId) ? true : false,
+  );
 
   const handleFollow = async () => {
     const updatedUser = await addFollower(
@@ -41,9 +37,15 @@ export const TweetCard = ({
       prevUsers.map((user) => (user.id === cardId ? updatedUser : user)),
     );
 
+    const currentFollowingCards =
+      JSON.parse(localStorage.getItem('followingTweets')) || [];
+    const updatedFollowingCards = newFollowingState
+      ? [...currentFollowingCards, cardId]
+      : currentFollowingCards.filter((id) => id !== cardId);
+
     localStorage.setItem(
-      `isFollowing_${cardId}`,
-      JSON.stringify(newFollowingState),
+      'followingTweets',
+      JSON.stringify(updatedFollowingCards),
     );
   };
   return (

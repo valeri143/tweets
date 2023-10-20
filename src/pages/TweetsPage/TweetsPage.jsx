@@ -45,6 +45,8 @@ const TweetsPage = () => {
   }, [page]);
 
   useEffect(() => {
+    const currentFollowingTweets =
+      JSON.parse(localStorage.getItem('followingTweets')) || [];
     let followingUsers;
     let withoutFollowingUsers;
     switch (filter) {
@@ -52,17 +54,15 @@ const TweetsPage = () => {
         setFilteredUsers(users);
         break;
       case 'follow':
-        withoutFollowingUsers = users.filter((user) => {
-          const isFollowing = localStorage.getItem(`isFollowing_${user.id}`);
-          return isFollowing !== 'true';
-        });
+        withoutFollowingUsers = users.filter(
+          (user) => !currentFollowingTweets.includes(user.id),
+        );
         setFilteredUsers(withoutFollowingUsers);
         break;
       case 'followings':
-        followingUsers = users.filter((user) => {
-          const isFollowing = localStorage.getItem(`isFollowing_${user.id}`);
-          return isFollowing === 'true';
-        });
+        followingUsers = users.filter((user) =>
+          currentFollowingTweets.includes(user.id),
+        );
         setFilteredUsers(followingUsers);
         break;
       default:
@@ -111,6 +111,7 @@ const TweetsPage = () => {
                   followers={user.followers}
                   avatar={user.avatar}
                   setUsers={setUsers}
+                  isFollowed={user.isFollowed}
                 />
               </li>
             ))}
