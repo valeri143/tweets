@@ -49,12 +49,11 @@ export const StyledTweetCircle = styled.div`
   align-items: center;
   width: 80px;
   height: 80px;
-  border-color: var(--primary-color);
+  background-color: var(--primary-color);
   border-radius: 50%;
-  border-width: 8px;
   box-shadow:
-    0px 0px 0px 8px #fbf8ff inset,
-    6px -2.19582px 4.39163px 4px #ae7be3 inset;
+    0px 4.39163px 3.29372px 0px #fbf8ff inset,
+    0px -2.19582px 4.39163px 0px #ae7be3 inset;
   filter: drop-shadow(
     0px 4.391631126403809px 4.391631126403809px rgba(0, 0, 0, 0.06)
   );
