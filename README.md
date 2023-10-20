@@ -5,6 +5,22 @@
 Tweets-app project, which provides a user interface for viewing, tracking and
 filtering tweets. ![TWEETS-APP](./src/assets/readme-screen.png)
 
+
+## Реалізований функціонал / Implemented functionality
+
+- [x] Базовий дизайн та функціонал сторінок. / Basic design and functionality of
+      the pages.
+- [x] Верстка фіксована в рх, семантична та валідна. / Layout is fixed in px,
+      semantic and valid.
+- [x] Інтерактивність працює відповідно до технічного завдання. / Interactivity
+      works in accordance with the terms of reference.
+- [x] Код відформатований та без коментарів. / Code formatted and without
+      comments.
+- [x] Немає помилок в консолі браузера. / No errors in browser console.
+- [x] Створена маршрутизація через React Router. /Generated routing via React
+      Router.
+- [x] Додана фільтрація. /Added filtering.
+
 ## Технічний стек / Technical stack
 
 ![React](https://img.shields.io/badge/React-%23007ACC.svg?style=for-the-badge&logo=react&logoColor=white)
@@ -27,17 +43,3 @@ filtering tweets. ![TWEETS-APP](./src/assets/readme-screen.png)
    [http://localhost:5173/tweets-app](http://localhost:5173/tweets-app) to view
    the application.
 
-## Реалізований функціонал / Implemented functionality
-
-- [x] Базовий дизайн та функціонал сторінок. / Basic design and functionality of
-      the pages.
-- [x] Верстка фіксована в рх, семантична та валідна. / Layout is fixed in px,
-      semantic and valid.
-- [x] Інтерактивність працює відповідно до технічного завдання. / Interactivity
-      works in accordance with the terms of reference.
-- [x] Код відформатований та без коментарів. / Code formatted and without
-      comments.
-- [x] Немає помилок в консолі браузера. / No errors in browser console.
-- [x] Створена маршрутизація через React Router. /Generated routing via React
-      Router.
-- [x] Додана фільтрація. /Added filtering.
